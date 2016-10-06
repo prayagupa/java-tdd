@@ -14,6 +14,15 @@ https://blog.knoldus.com/2011/05/16/working-with-scala-test/
 
 ![image](https://phithoughts.files.wordpress.com/2011/05/core-traits.png?w=640)
 
+
 ```
 sbt test
 ```
+
+using maven
+---------------------
+
+```
+mvn clean test
+```
+

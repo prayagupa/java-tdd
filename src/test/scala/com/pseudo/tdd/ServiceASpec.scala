@@ -1,6 +1,8 @@
 package com.pseudo.tdd
 
+import org.junit.runner.RunWith
 import org.mockito.{ArgumentCaptor, Matchers, Mockito}
+import org.scalatest.junit.JUnitRunner
 import org.scalatest.{BeforeAndAfterEach, FunSuite}
 
 import scala.collection.JavaConversions._
@@ -10,6 +12,7 @@ import scala.collection.JavaConversions._
   * on 10/3/16.
   */
 
+@RunWith(classOf[JUnitRunner])
 class ServiceASpec extends FunSuite with BeforeAndAfterEach {
 
   var serviceA : ServiceA = _
