@@ -1,4 +1,4 @@
-package com.pseudo.tdd;
+package com.pseudo.tdd.tdd;
 
 import java.util.HashMap;
 import java.util.Map;

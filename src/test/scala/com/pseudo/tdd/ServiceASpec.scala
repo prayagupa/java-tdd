@@ -1,4 +1,4 @@
-package com.pseudo.tdd
+package com.pseudo.tdd.tdd
 
 import org.junit.runner.RunWith
 import org.mockito.{ArgumentCaptor, Matchers, Mockito}
