@@ -14,5 +14,7 @@ libraryDependencies += "org.scalactic" %% "scalactic" % "3.0.0"
 
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.0" % "test"
 
+libraryDependencies += "org.powermock" % "powermock-module-junit4" % "1.6.5"
 
+libraryDependencies += "org.powermock" % "powermock-api-mockito" % "1.6.5"
 
