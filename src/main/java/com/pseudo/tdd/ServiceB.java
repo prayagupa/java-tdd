@@ -1,4 +1,4 @@
-package com.pseudo.tdd.tdd;
+package com.pseudo.tdd;
 
 import java.util.Map;
 
