@@ -7,7 +7,7 @@ package com.pseudo.tdd;
 
 public class StaticClass {
 
-    public static String staticMethod() {
+    public static String staticMethod() throws Exception {
         return "static world";
     }
 

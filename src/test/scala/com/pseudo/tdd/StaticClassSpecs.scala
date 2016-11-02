@@ -17,10 +17,18 @@ import org.powermock.modules.junit4.PowerMockRunner
 class StaticClassSpecs {
 
   @Test
-  def something() {
+  def tesSomething() {
     PowerMockito.mockStatic(classOf[StaticClass])
     Mockito.when(StaticClass.staticMethod()).thenReturn("nihilist cat")
 
     Assert.assertEquals(StaticClass.staticMethod(), "nihilist cat")
+  }
+
+  @Test(expected=classOf[Exception])
+  def testException() {
+    PowerMockito.mockStatic(classOf[StaticClass])
+    Mockito.when(StaticClass.staticMethod()).thenThrow(new Exception("upd"))
+
+    StaticClass.staticMethod()
   }
 }
