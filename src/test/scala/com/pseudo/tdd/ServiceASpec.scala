@@ -23,24 +23,24 @@ class ServiceASpec extends FunSuite with BeforeAndAfterEach {
   }
 
   test("Service A delegates to ServiceB with kvp") {
-    serviceA.method1("dreams")
+    serviceA.echoAlPachino("dreams")
 
     val captor = ArgumentCaptor.forClass(classOf[String])
 
-    Mockito.verify(serviceA.serviceB).method2("dreams-once", "dreams-again")
+    Mockito.verify(serviceA.serviceB).doSomething1("dreams-once", "dreams-again")
 
-    Mockito.verify(serviceA.serviceB).method3(captor.capture())
+    Mockito.verify(serviceA.serviceB).doSomething2(captor.capture())
 
     assert(captor.getValue == "dreams")
   }
 
   test("Service A delegates to ServiceB with kvp which is captured in this test") {
 
-    serviceA.method1("dreams")
+    serviceA.echoAlPachino("dreams")
 
     val captor2 = ArgumentCaptor.forClass(classOf[java.util.Map[String, String]])
 
-    Mockito.verify(serviceA.serviceB).method4(captor2.capture())
+    Mockito.verify(serviceA.serviceB).doSomething3(captor2.capture())
 
     val map: java.util.Map[String, String] = captor2.getValue
 
@@ -49,11 +49,11 @@ class ServiceASpec extends FunSuite with BeforeAndAfterEach {
 
   test("Service A delegates to ServiceB with kvp which is captured in this test again") {
 
-    serviceA.method1("dreams")
+    serviceA.echoAlPachino("dreams")
 
     val captor3 = ArgumentCaptor.forClass(classOf[java.util.Map[String, String]])
 
-    Mockito.verify(serviceA.serviceB).method5(Matchers.eq("dreams"), captor3.capture())
+    Mockito.verify(serviceA.serviceB).doSomething4(Matchers.eq("dreams"), captor3.capture())
 
     assert(captor3.getValue()("key") == "dreams")
   }

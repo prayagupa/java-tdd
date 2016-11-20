@@ -12,15 +12,15 @@ public class ServiceA {
 
     public ServiceB serviceB = new ServiceB();
 
-    public void method1(final String something) {
+    public void echoAlPachino(final String something) {
 
-        serviceB.method2(something+"-once", something+"-again");
-        serviceB.method3(something);
+        serviceB.doSomething1(something+"-once", something+"-again");
+        serviceB.doSomething2(something);
 
         Map<String, String> map = new HashMap<String, String>(){{
             put("key", something);
         }};
-        serviceB.method4(map);
-        serviceB.method5(something, map);
+        serviceB.doSomething3(map);
+        serviceB.doSomething4(something, map);
     }
 }

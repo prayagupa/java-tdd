@@ -8,19 +8,19 @@ import java.util.Map;
  */
 public class ServiceB {
 
-    public void method2(String arg1, String arg2){
+    public void doSomething1(String arg1, String arg2){
         System.out.println(arg1);
     }
 
-    public void method3(String something){
+    public void doSomething2(String something){
         System.out.println(something);
     }
 
-    public void method4(Map<String, String> map){
+    public void doSomething3(Map<String, String> map){
         System.out.println(map);
     }
 
-    public void method5(String something, Map<String, String> map){
+    public void doSomething4(String something, Map<String, String> map){
         System.out.println(map);
     }
 }

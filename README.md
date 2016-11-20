@@ -26,3 +26,10 @@ using maven
 mvn clean test
 ```
 
+
+FIXME
+------
+
+```
+java.lang.NoSuchMethodError: org.mockito.internal.creation.MockSettingsImpl.setMockName(Lorg/mockito/mock/MockName;)Lorg/mockito/internal/creation/settings/CreationSettings;
+```
