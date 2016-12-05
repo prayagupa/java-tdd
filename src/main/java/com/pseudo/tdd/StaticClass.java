@@ -11,4 +11,7 @@ public class StaticClass {
         return "static world";
     }
 
+    public static String staticMethod(String name) throws Exception {
+        return "static world - " + name;
+    }
 }
