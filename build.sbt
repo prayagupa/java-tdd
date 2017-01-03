@@ -18,3 +18,4 @@ libraryDependencies += "org.powermock" % "powermock-module-junit4" % "1.6.5"
 
 libraryDependencies += "org.powermock" % "powermock-api-mockito" % "1.6.5"
 
+libraryDependencies += "org.scalamock" %% "scalamock-scalatest-support" % "3.2.2" % "test"
