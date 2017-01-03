@@ -14,7 +14,7 @@ import org.powermock.modules.junit4.PowerMockRunner
   */
 
 @RunWith(classOf[PowerMockRunner])
-@PrepareForTest(Array(classOf[StaticClass]))
+@PrepareForTest(Array(classOf[StaticClass], classOf[EvenMoreStaticClass], classOf[System]))
 class IUseStaticClassSpecs {
 
   val iUseStaticClass = new IUseStaticClass
@@ -31,5 +31,31 @@ class IUseStaticClassSpecs {
     PowerMockito.verifyStatic(Mockito.times(1))
     StaticClass.staticMethod(Matchers.eq("prayagupd"))
     //StaticClass.staticMethod("something-as-prayagupd")
+  }
+
+  @Test
+  def calls_Even_More_Static_Method(): Unit = {
+    //given
+    PowerMockito.mockStatic(classOf[EvenMoreStaticClass])
+
+    //when
+    iUseStaticClass.iUseStaticClass("prayagupd")
+
+    //then
+    PowerMockito.verifyStatic(Mockito.times(1))
+    EvenMoreStaticClass.staticMethod()
+  }
+
+  @Test
+  def calls_System_Method(): Unit = {
+    //given
+    PowerMockito.mockStatic(classOf[System])
+
+    //when
+    iUseStaticClass.iUseStaticClass("prayagupd")
+
+    //then
+    PowerMockito.verifyStatic(Mockito.times(1))
+    System.setProperty("name", "prayagupd")
   }
 }

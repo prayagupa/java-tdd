@@ -9,5 +9,7 @@ class IUseStaticClass {
 
   def iUseStaticClass(name: String): Unit ={
     StaticClass.staticMethod(name)
+    EvenMoreStaticClass.staticMethod()
+    System.setProperty("name", name)
   }
 }

@@ -23,15 +23,18 @@ class ServiceASpec extends FunSuite with BeforeAndAfterEach {
   }
 
   test("Service A delegates to ServiceB with kvp") {
+
+    //when
     serviceA.echoAlPachino("dreams")
 
-    val captor = ArgumentCaptor.forClass(classOf[String])
+    //then
+    val serviceBCaptor = ArgumentCaptor.forClass(classOf[String])
 
     Mockito.verify(serviceA.serviceB).doSomething1("dreams-once", "dreams-again")
 
-    Mockito.verify(serviceA.serviceB).doSomething2(captor.capture())
+    Mockito.verify(serviceA.serviceB).doSomething2(serviceBCaptor.capture())
 
-    assert(captor.getValue == "dreams")
+    assert(serviceBCaptor.getValue == "dreams")
   }
 
   test("Service A delegates to ServiceB with kvp which is captured in this test") {
