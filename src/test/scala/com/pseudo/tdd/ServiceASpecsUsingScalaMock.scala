@@ -10,23 +10,23 @@ import org.scalatest.{FlatSpec, FunSuite}
 
 class ServiceASpecsUsingScalaMock extends FlatSpec with MockFactory {
 
-  val service = new ServiceA
-  service.serviceB = mock[ServiceB]
+  val serviceA = new ServiceA
+  serviceA.serviceB = mock[ServiceB]
 
   "service A" should "delegate to ServiceB with kvp" in {
 
-    (service.serviceB.doSomething1 _) expects("serpico-once", "serpico-again")
-    (service.serviceB.doSomething2 _) expects("serpico")
+    (serviceA.serviceB.doSomething1(_:String, _: String)) expects("serpico-once", "serpico-again")
+    (serviceA.serviceB.doSomething2 (_: String)) expects("serpico")
 
     val hash = new java.util.HashMap[String, String] {
       put("key", "serpico")
     }
 
-    (service.serviceB.doSomething3 _) expects(hash)
-    (service.serviceB.doSomething4 _) expects("serpico", hash)
+    (serviceA.serviceB.doSomething3 (_: java.util.Map[String, String])) expects(hash)
+    (serviceA.serviceB.doSomething4 (_: String, _:java.util.Map[String, String])) expects("serpico", hash)
 
     //when
-    service.echoAlPachino("serpico")
+    serviceA.echoAlPachino("serpico")
 
   }
 }
