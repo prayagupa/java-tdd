@@ -10,7 +10,7 @@ import org.scalatest.FlatSpec
   * on 1/3/17.
   */
 
-class ScalaMockExampleSpecs extends FlatSpec with MockFactory {
+class GameScalaMockSpecs extends FlatSpec with MockFactory {
 
   val winner = Player(id = 1, nickname = "prayagaupd", country = "USA")
   val loser = Player(id = 2, nickname = "Curtis", country = "Germany")

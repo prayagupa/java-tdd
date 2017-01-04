@@ -14,6 +14,7 @@ Unit Testing
 
 ![image](https://phithoughts.files.wordpress.com/2011/05/core-traits.png?w=640)
 
+[scalamock, native scala testing](https://github.com/paulbutcher/scalamock#features)
 
 ```
 sbt test
