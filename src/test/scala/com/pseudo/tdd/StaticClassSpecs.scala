@@ -1,7 +1,7 @@
 package com.pseudo.tdd
 
-import org.junit.{Assert, Test}
 import org.junit.runner.RunWith
+import org.junit.{Assert, Test}
 import org.mockito.Mockito
 import org.powermock.api.mockito.PowerMockito
 import org.powermock.core.classloader.annotations.PrepareForTest
@@ -19,7 +19,7 @@ class StaticClassSpecs {
   @Test
   def tesSomething() {
     PowerMockito.mockStatic(classOf[StaticClass])
-    Mockito.when(StaticClass.staticMethod()).thenReturn("nihilist cat")
+    Mockito when StaticClass.staticMethod() thenReturn "nihilist cat"
 
     Assert.assertEquals(StaticClass.staticMethod(), "nihilist cat")
   }
@@ -27,7 +27,7 @@ class StaticClassSpecs {
   @Test(expected=classOf[Exception])
   def testException() {
     PowerMockito.mockStatic(classOf[StaticClass])
-    Mockito.when(StaticClass.staticMethod()).thenThrow(new Exception("upd"))
+    Mockito when StaticClass.staticMethod() thenThrow new Exception("upd")
 
     StaticClass.staticMethod()
   }
