@@ -16,7 +16,7 @@ import static org.mockito.Matchers.eq;
 public class ServiceATest {
 
     @Test
-    public void testThings() {
+    public void testSomethingDelegatesToSomethingElse() {
         ServiceA serviceA = new ServiceA();
         serviceA.serviceB = Mockito.mock(ServiceB.class);
 

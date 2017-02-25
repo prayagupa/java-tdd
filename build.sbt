@@ -6,6 +6,12 @@ scalaVersion := "2.11.8"
 
 resolvers += "Artima Maven Repository" at "http://repo.artima.com/releases"
 
+libraryDependencies += "info.cukes" % "cucumber-junit" % "1.2.5"
+
+libraryDependencies += "info.cukes" % "cucumber-java8" % "1.2.5"
+
+libraryDependencies += "com.google.code.gson" % "gson" % "2.8.0"
+
 libraryDependencies += "junit" % "junit" % "4.8.2" % "test"
 
 libraryDependencies += "org.mockito" % "mockito-all" % "1.10.19"

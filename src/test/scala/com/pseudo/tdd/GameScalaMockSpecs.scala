@@ -1,7 +1,5 @@
 package com.pseudo.tdd
 
-import javax.security.auth.Subject
-
 import org.scalamock.scalatest.MockFactory
 import org.scalatest.FlatSpec
 

@@ -1,7 +1,7 @@
 package com.pseudo.tdd
 
 import org.scalamock.scalatest.MockFactory
-import org.scalatest.{FlatSpec, FunSuite}
+import org.scalatest.FlatSpec
 
 /**
   * Created by prayagupd
@@ -11,9 +11,12 @@ import org.scalatest.{FlatSpec, FunSuite}
 class ServiceASpecsUsingScalaMock extends FlatSpec with MockFactory {
 
   val serviceA = new ServiceA
-  serviceA.serviceB = mock[ServiceB]
 
   "service A" should "delegate to ServiceB with kvp" in {
+
+    println("classpath - " + System.getProperty("java.classpath"))
+
+    serviceA.serviceB = mock[ServiceB]
 
     //assertions
     (serviceA.serviceB.doSomething1(_:String, _: String)) expects("serpico-once", "serpico-again")

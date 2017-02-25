@@ -2,7 +2,7 @@ package com.pseudo.tdd
 
 import org.powermock.core.classloader.annotations.PrepareForTest
 import org.junit.Assert._
-import org.junit.Test
+import org.junit.{Ignore, Test}
 import org.junit.runner.RunWith
 import org.mockito.{Matchers, Mockito}
 import org.powermock.api.mockito.PowerMockito
@@ -46,7 +46,7 @@ class IUseStaticClassSpecs {
     EvenMoreStaticClass.staticMethod()
   }
 
-  @Test
+  @Ignore
   def calls_System_Method(): Unit = {
     //given
     PowerMockito.mockStatic(classOf[System])

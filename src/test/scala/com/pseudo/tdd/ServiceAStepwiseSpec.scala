@@ -18,7 +18,7 @@ class ServiceAStepwiseSpec extends FunSpec {
     service.echoAlPachino("divine")
 
     it("echoAlPachino delegates to serviceB doSomething1") {
-      Mockito.verify(service.serviceB).doSomething1(Matchers.eq("divine-once"), Matchers.eq("divine-againn"))
+      Mockito.verify(service.serviceB).doSomething1(Matchers.eq("divine-once"), Matchers.eq("divine-again"))
     }
 
     it("echoAlPachino also delegates to serviceB doSomething2") {
