@@ -10,55 +10,15 @@ object ImplicitlySucks {
 
   case class Motor(moves: String = "motorrrrr") extends Vehicle
 
-  def doesNotWork = {
+  def listOfImplicits = {
 
-    implicit object Car
-    implicit val cars: List[Car.type] = List(Car, Car)
+    implicit val cars: List[Car] = List(Car(), Car())
 
-    //println(implicitly[List[Car]].map(_.moves).mkString(","))
+    println(implicitly[List[Car]].map(_.moves).mkString(","))
 
   }
 
   def works = {
-    sealed trait Json
-    object Json {
-
-      case class Str(s: String) extends Json
-
-      case class Num(value: Double) extends Json
-
-      // ... many more definitions
-    }
-
-    trait Jsonable[T] {
-      def serialize(t: T): Json
-    }
-    object Jsonable {
-
-      implicit object StringJsonable extends Jsonable[String] {
-        def serialize(t: String) = Json.Str(t)
-      }
-
-      implicit object DoubleJsonable extends Jsonable[Double] {
-        def serialize(t: Double) = Json.Num(t)
-      }
-
-      implicit object IntJsonable extends Jsonable[Int] {
-        def serialize(t: Int) = Json.Num(t.toDouble)
-      }
-
-    }
-
-    def convertToJson[T](x: T)(implicit converter: Jsonable[T]): Json = {
-      converter.serialize(x)
-    }
-
-    val x = convertToJson("hello")
-
-    println(x)
-  }
-
-  def intent = {
     sealed trait IntentAction
     object IntentAction {
 
@@ -95,6 +55,57 @@ object ImplicitlySucks {
     val x = processIntentAction("action1")
 
     println(x)
+  }
+
+
+  def intent = {
+
+    trait Intent {
+      def `type`: String
+    }
+
+    object Intent {
+
+      case class BandTourIntent(`type`: String = "BandTourStatus") extends Intent
+
+      case class BandAlbumsIntent(`type`: String = "BandsAlbums") extends Intent
+
+    }
+
+    trait IntentAction
+
+    object IntentAction {
+
+      case class BandTourAction(i: Intent.BandTourIntent) extends IntentAction
+
+      case class BandAlbumAction(i: Intent.BandAlbumsIntent) extends IntentAction
+
+    }
+
+    trait IntentActionHandler[T] {
+      def handle(t: T): IntentAction
+    }
+
+    //object IntentActionHandler {
+
+    implicit object TourIntentActionHandler extends IntentActionHandler[Intent.BandTourIntent] {
+      def handle(t: Intent.BandTourIntent) = IntentAction.BandTourAction(t)
+    }
+
+    implicit object AlbumIntentActionHandler extends IntentActionHandler[Intent.BandAlbumsIntent] {
+      def handle(t: Intent.BandAlbumsIntent) = IntentAction.BandAlbumAction(t)
+    }
+
+    //}
+
+    //def processIntentAction[T](intent: T)(implicit handler: IntentActionHandler[T]): IntentAction = handler.handle(intent)
+
+    //val action = processIntentAction(Intent.BandTourIntent())
+
+    //println(action)
+
+    println(implicitly[IntentActionHandler[Intent.BandTourIntent]].handle(Intent.BandTourIntent()))
+
   }
 
   def main(args: Array[String]): Unit = {
