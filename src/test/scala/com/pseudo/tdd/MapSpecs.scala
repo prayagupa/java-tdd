@@ -1,3 +1,5 @@
+package com.pseudo.tdd
+
 import org.scalatest.FunSpec
 
 /**
@@ -24,13 +26,13 @@ class MapSpecs extends FunSpec {
       }
     }
 
-    println(awesomeMap mkString("="))
+    println(awesomeMap mkString ("="))
   }
 
-  it("flattens me to single tuple"){
+  it("flattens me to single tuple") {
 
-    implicit def flattMe(seq: Seq[((Int, Int), Int)]) : Seq[(Int, Int, Int)] =
-      seq.map { case ((x, y), z) => (x, y, z)}
+    implicit def flattMe(seq: Seq[((Int, Int), Int)]): Seq[(Int, Int, Int)] =
+      seq.map { case ((x, y), z) => (x, y, z) }
 
     val data = flattMe(Seq(((1, 2), 3), ((4, 5), 6), ((7, 8), 9)))
 
@@ -40,7 +42,7 @@ class MapSpecs extends FunSpec {
 
   }
 
-  it("flattens me"){
+  it("flattens me") {
 
     implicit def flattenMe[A, B, C](tuple: ((A, B), C)): (A, B, C) = {
       (tuple._1._1, tuple._1._2, tuple._2)
@@ -52,7 +54,7 @@ class MapSpecs extends FunSpec {
 
   it("takes list as implicit") {
 
-    implicit def doSomething(num: Int) : String = num.toString //FIXME
+    implicit def doSomething(num: Int): String = num.toString //FIXME
 
     val x = List(doSomething(1))
 
