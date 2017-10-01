@@ -28,6 +28,9 @@ object IntentAction {
 
 }
 
+//typeclass
+//A typeclass is a sort of interface that defines some behavior. If a type is a part of a typeclass,
+// that means that it supports and implements the behavior the typeclass describes.
 trait IntentActionHandler[T] { def handle(t: T): IntentAction }
 
 class TourIntentActionHandler extends IntentActionHandler[Intent.BandTourIntent] {

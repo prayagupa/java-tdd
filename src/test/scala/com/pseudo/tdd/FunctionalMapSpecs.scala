@@ -6,7 +6,7 @@ import org.scalatest.FunSpec
   * Created by prayagupd
   * on 2/19/17.
   */
-class MapSpecs extends FunSpec {
+class FunctionalMapSpecs extends FunSpec {
 
   it("prints a map in key value format") {
     val awesomeMap = Map("k1" -> "v1",

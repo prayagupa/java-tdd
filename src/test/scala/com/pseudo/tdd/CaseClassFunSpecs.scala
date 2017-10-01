@@ -182,50 +182,5 @@ class CaseClassFunSpecs extends FunSpec {
       //      }
     }
 
-    it("x") {
-      //      val input = "month(1989),year(2017),month(2017)"
-      //      val regex = "([0-9]+) ([0-9]+) ([0-9]+)".r
-      //
-      //      val regex(startDate, otherDate, notherDate) = input
-
-      val pattern = "([0-9]+) ([A-Za-z]+)".r
-      val pattern(count, fruit) = "100 Bananas"
-    }
-
-    it("dfs") {
-      def isAllDigits(x: String) = x forall Character.isDigit
-
-      var createTimeStamp = "1487905455000"
-
-      val x = {
-        createTimeStamp match {
-          case "unknown" => -1L
-          case x => if (isAllDigits(x)) x.toLong
-          else {
-            val format = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy")
-            Try(format.parse(x).getTime) match {
-              case Success(t) => t
-              case Failure(_) => -1L
-            }
-          }
-        }
-      }
-
-      println(x)
-    }
-
-    it("f") {
-      val nonEmpty = Seq("somevalue")
-      val empty = Seq[String]()
-
-      val seqOpt = List(Option(empty), Option(Seq("somevalue"))) map {
-        case seq if seq.get.isEmpty => None
-        case x => x
-      }
-
-      assert(seqOpt.head == None)
-      assert(seqOpt(1) == Option(nonEmpty))
-    }
-
   }
 }
