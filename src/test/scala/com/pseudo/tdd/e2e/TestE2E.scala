@@ -15,14 +15,14 @@ class TestE2E extends FeatureSpec with GivenWhenThen {
 
   val requestResponse =
     Table(
-      ("request", "response"),
-      (  "GET",   "GET-something"),
-      ( "POST",   "POST-something")
+      ("id", "request", "response"),
+      (1, "GET", "GET-something"),
+      (2, "POST", "POST-something")
     )
 
   feature("testMe") {
 
-    forAll (requestResponse) { (givenRequestFromTable: String, expectedResponseFromTable: String) =>
+    forAll(requestResponse) { (id, givenRequestFromTable: String, expectedResponseFromTable: String) =>
 
       scenario("for input " + givenRequestFromTable) {
 
@@ -35,7 +35,7 @@ class TestE2E extends FeatureSpec with GivenWhenThen {
     }
   }
 
-  def testMe(input: String) : String = {
-     input + "-something"
+  def testMe(input: String): String = {
+    input + "-something"
   }
 }

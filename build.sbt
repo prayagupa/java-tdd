@@ -12,6 +12,16 @@ libraryDependencies += "info.cukes" % "cucumber-java8" % "1.2.5"
 
 libraryDependencies += "com.google.code.gson" % "gson" % "2.8.0"
 
+libraryDependencies += "org.scala-lang.modules" % "scala-java8-compat_2.12" % "0.8.0"
+
+libraryDependencies += "com.chuusai" % "shapeless_2.12" % "2.3.2"
+
+libraryDependencies += "com.fasterxml.jackson.core" % "jackson-core" % "2.9.1"
+
+libraryDependencies += "com.fasterxml.jackson.core" % "jackson-databind" % "2.9.1"
+
+libraryDependencies += "com.fasterxml.jackson.module" % "jackson-module-scala_2.12" % "2.9.1"
+
 libraryDependencies += "junit" % "junit" % "4.8.2" % "test"
 
 libraryDependencies += "org.mockito" % "mockito-all" % "1.10.19"
