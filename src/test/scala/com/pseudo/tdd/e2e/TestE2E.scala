@@ -1,9 +1,7 @@
 package com.pseudo.tdd.e2e
 
-import java.util.Properties
-
-import org.scalatest.{FeatureSpec, GivenWhenThen}
 import org.scalatest.prop.TableDrivenPropertyChecks._
+import org.scalatest.{FeatureSpec, GivenWhenThen}
 
 
 /**

@@ -1,6 +1,8 @@
-package com.pseudo.tdd.strategy
+package com.pseudo.tdd
 
-object ImplicitlySucks {
+import org.scalatest.{FunSuite, Matchers}
+
+class ImplicitlySpecs extends FunSuite with Matchers {
 
   trait Vehicle {
     def moves: String
@@ -16,5 +18,21 @@ object ImplicitlySucks {
 
     println(implicitly[List[Car]].map(_.moves).mkString(","))
 
+  }
+
+  test("encrypted") {
+
+    trait CanEncrypt {
+      def encrypt(implicit crypto: String, data: String) = "enced " + data
+    }
+
+
+    class Encryptero()(implicit val crypto: String) extends CanEncrypt {
+      def doSomething(data: String) = encrypt(implicitly, data = data)
+    }
+
+    implicit val a = ""
+
+    new Encryptero().doSomething("my data") shouldBe "enced my data"
   }
 }

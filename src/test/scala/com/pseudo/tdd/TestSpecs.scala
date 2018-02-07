@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat
 import org.mockito
 import org.mockito.Mockito
 import org.mockito.stubbing.OngoingStubbing
-import org.scalatest.FunSuite
+import org.scalatest.{FunSuite, Matchers}
 
 import scala.util.{Failure, Success, Try}
 
@@ -22,7 +22,8 @@ class Subject {
 
 }
 
-class TestSpecs extends FunSuite {
+class TestSpecs extends FunSuite with Matchers {
+
   val s = Mockito.mock(classOf[Subject])
 
   test("whatever") {
@@ -66,5 +67,17 @@ class TestSpecs extends FunSuite {
 
     assert(seqOpt.head == None)
     assert(seqOpt(1) == Option(nonEmpty))
+  }
+
+  test("whatever II") {
+    import java.util.regex.Pattern
+    val m = Pattern.compile("""ENC\((.*?)\)""").matcher("aa ENC(paa) hgfh ENC(b==)")
+
+    val it = new Iterator[String] {
+      override def hasNext = m.find()
+      override def next() = m.group(1)
+    }.toList
+
+    it shouldBe List("paa", "b==")
   }
 }

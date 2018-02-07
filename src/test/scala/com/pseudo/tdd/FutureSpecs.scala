@@ -1,6 +1,6 @@
 package com.pseudo.tdd
 
-import java.util.concurrent.TimeUnit
+import java.util.concurrent.{CompletableFuture, TimeUnit}
 
 import org.mockito.{Mock, Mockito}
 import org.scalatest.{FunSuite, Matchers}
@@ -9,6 +9,7 @@ import scala.collection.parallel.ParSeq
 import scala.concurrent.duration.Duration
 import scala.concurrent.{Await, Future}
 import scala.util.{Failure, Success, Try}
+import scala.compat.java8.FutureConverters._
 
 class FutureSpecs extends FunSuite with Matchers {
 
@@ -185,7 +186,7 @@ class FutureSpecs extends FunSuite with Matchers {
 
     def shipOrder(x: Int) = x * 2
 
-    Future.fromTry(Try(downloadOrder("mobile-channel")))
+    Future.fromTry(Try(downloadOrder("mobile-channel-should-throw-ex")))
       .flatMap(order => prepareOrder(order))
       .flatMap(order => Future {
         s"${order.itemName} prepared"
@@ -210,23 +211,30 @@ class FutureSpecs extends FunSuite with Matchers {
       case _ => throw new Exception("Channels not supported")
     }
 
-    def prepareOrderFuture(order: Order): Future[Order] = Future[Order] {
-      if (order.quantity < 5) order
-      else throw new Exception("Item does not have enough quantity")
-    }
+    def prepareOrderFuture(order: Order): Order= order
 
-    def shipOrder(x: Int) = x * 2
+    def shipOrder(order: Order) = Future { order.copy(status = "SHIPPING") }
+
+    def delivered(order: Order) = {
+      Future {s"${order.itemName} delivered"}
+    }
 
     def tellToProcess(): Future[String] = {
 
       Future.fromTry(Try(downloadOrder("mobile-channel")))
-        .flatMap(order => prepareOrderFuture(order))
-        .flatMap(order => Future {s"${order.itemName} prepared"})
-        .recover { case e => throw new Exception("Error processing order", e) }
+        .flatMap(order => Future(prepareOrderFuture(order)))
+        .flatMap(shipOrder)
+        .flatMap(order => delivered(order))
+        .recover { case e =>
+          e.printStackTrace()
+          throw new Exception("Error processing order", e)
+        }
     }
 
-    tellToProcess()
-      .map(x => println(x))
-      .recover {case e => e.printStackTrace()}
+    val response = tellToProcess().toJava.toCompletableFuture
+
+    println(response)
+
+    Thread.sleep(100)
   }
 }
