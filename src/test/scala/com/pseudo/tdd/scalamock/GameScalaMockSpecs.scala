@@ -1,5 +1,6 @@
-package com.pseudo.tdd
+package com.pseudo.tdd.scalamock
 
+import com.pseudo.tdd._
 import org.scalamock.scalatest.MockFactory
 import org.scalatest.FlatSpec
 
@@ -14,6 +15,7 @@ class GameScalaMockSpecs extends FlatSpec with MockFactory {
   val loser = Player(id = 2, nickname = "Curtis", country = "Germany")
 
   "doSomething" should "update LeaderBoard after finished match" in {
+    //you expect on mock
     val countryLeaderBoardMock = mock[CountryLeaderboard]
 
     val userDetailsServiceStub = stub[PlayerDatabase]

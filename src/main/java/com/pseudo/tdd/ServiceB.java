@@ -9,6 +9,10 @@ import java.util.Map;
 
 public class ServiceB {
 
+    public String deliverOrder(String input) {
+        return "data";
+    }
+
     public void doSomething1(String arg1, String arg2){
         System.out.println(arg1);
     }

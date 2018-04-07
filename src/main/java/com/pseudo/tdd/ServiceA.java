@@ -23,4 +23,8 @@ public class ServiceA {
         serviceB.doSomething3(map);
         serviceB.doSomething4(something, map);
     }
+
+    public String deliverOrder(String orderID) {
+        return serviceB.deliverOrder(orderID);
+    }
 }

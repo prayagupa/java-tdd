@@ -107,7 +107,7 @@
         <dependency>
             <groupId>org.scalamock</groupId>
             <artifactId>scalamock-scalatest-support_2.12</artifactId>
-            <version>3.5.0</version>
+            <version>3.6.0</version>
             <scope>test</scope>
         </dependency>
 

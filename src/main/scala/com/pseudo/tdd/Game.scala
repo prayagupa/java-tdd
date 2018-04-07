@@ -10,18 +10,22 @@ case class CountryLeaderboardEntry(country: String, points: Int)
 
 trait CountryLeaderboard {
   def add(country: String): Unit
+
   def getTopCountries(): List[CountryLeaderboardEntry]
 }
 
 case class Player(id: Int, nickname: String, country: String)
 
 class PlayerDatabase() {
-  def getPlayerById(playerId: Int) : Player = new Player(playerId, nickname = "whatever from database", country = "whatever country")
+  def getPlayerById(playerId: Int): Player = Player(playerId,
+    nickname = "whatever from database",
+    country = "whatever country")
 }
 
 class RealCountryLeaderboard() {
 
   def addVictoryForCountry(country: String): Unit = println(country)
+
   def getTopCountries(): List[CountryLeaderboardEntry] = List.empty
 }
 
