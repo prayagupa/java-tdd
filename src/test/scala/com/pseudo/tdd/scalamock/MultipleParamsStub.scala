@@ -13,7 +13,7 @@ class Subject(val dependency: Dependency) {
 
 }
 
-class MultipleParamsMock extends FunSuite with Matchers with MockFactory {
+class MultipleParamsStub extends FunSuite with Matchers with MockFactory {
 
   test("test") {
     val deps = stub[Dependency]
