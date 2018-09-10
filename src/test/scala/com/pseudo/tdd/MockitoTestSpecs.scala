@@ -22,14 +22,14 @@ class Subject {
 
 }
 
-class TestSpecs extends FunSuite with Matchers {
+class MockitoTestSpecs extends FunSuite with Matchers {
 
-  val s = Mockito.mock(classOf[Subject])
+  val sub = Mockito.mock(classOf[Subject])
 
   test("whatever") {
-    when(s.doSomething) thenReturn "apple"
+    when(sub.doSomething()) thenReturn "apple"
 
-    assert(s.doSomething() == "apple")
+    assert(sub.doSomething() == "apple")
   }
 
   def when[T](methodCall: T): OngoingStubbing[T] = Mockito.when(methodCall)
@@ -65,7 +65,7 @@ class TestSpecs extends FunSuite with Matchers {
       case x => x
     }
 
-    assert(seqOpt.head == None)
+    assert(seqOpt.head.isEmpty)
     assert(seqOpt(1) == Option(nonEmpty))
   }
 
@@ -74,8 +74,8 @@ class TestSpecs extends FunSuite with Matchers {
     val m = Pattern.compile("""ENC\((.*?)\)""").matcher("aa ENC(paa) hgfh ENC(b==)")
 
     val it = new Iterator[String] {
-      override def hasNext = m.find()
-      override def next() = m.group(1)
+      override def hasNext: Boolean = m.find()
+      override def next(): String = m.group(1)
     }.toList
 
     it shouldBe List("paa", "b==")

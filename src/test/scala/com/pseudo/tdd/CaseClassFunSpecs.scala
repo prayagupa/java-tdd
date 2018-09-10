@@ -18,7 +18,7 @@ class CaseClassFunSpecs extends FunSpec {
 
     it("converts json to case class with empty age") {
 
-      case class person(name: String, age: Option[Long])
+      case class Person(name: String, age: Option[Long])
 
       val parser = new JsonParser()
 
@@ -27,7 +27,7 @@ class CaseClassFunSpecs extends FunSpec {
 
       val name = json.get("name").getAsString.toLowerCase
 
-      val personInstance = new person(json.get("name").getAsString.toLowerCase,
+      val personInstance = new Person(json.get("name").getAsString.toLowerCase,
         Option(json.get("age")).map(_.getAsLong))
 
       println(personInstance)

@@ -2,7 +2,7 @@ name := "scala-tdd"
 
 version := "1.0"
 
-scalaVersion := "2.12.4"
+scalaVersion := "2.12.6"
 
 resolvers += "Artima Maven Repository" at "http://repo.artima.com/releases"
 
