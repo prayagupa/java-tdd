@@ -7,7 +7,7 @@ import org.scalatest.FlatSpec
 
 import scala.concurrent.{Await, Future}
 
-class ScalaMockTrait extends FlatSpec with MockFactory {
+class ScalaStubTrait extends FlatSpec with MockFactory {
 
   it should "response employee namee" in {
     val extStub = stub[Ext]
