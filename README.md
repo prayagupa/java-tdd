@@ -1,4 +1,4 @@
-scala TDD
+java TDD
 =============
 
 Unit Testing
@@ -77,7 +77,7 @@ FIXME
 
 fix mockito version with powermockito
 
-```
+```bash
 java.lang.NoSuchMethodError: 
 org.mockito.internal.creation.MockSettingsImpl.setMockName(Lorg/mockito/mock/MockName;)
 Lorg/mockito/internal/creation/settings/CreationSettings;
