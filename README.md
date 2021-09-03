@@ -1,6 +1,8 @@
 Java TDD
 =============
 
+- [Software Testing](https://en.wikipedia.org/wiki/Software_testing#Testing_levels)
+
 Unit Testing
 -----------------
 
@@ -16,7 +18,7 @@ Every class or object created is a fake. It is a mock<> if you verify() calls ag
 Otherwise its a stub<>, stub has the behaviour pre-determined. stub also referred to as state-based
 ```
 
-eg.
+ex.
 
 ```java
 class SubjectToTest {
@@ -39,21 +41,11 @@ class DependencyStubImpl implements DependencyStub {
 }
 ```
 
-https://8thlight.com/blog/uncle-bob/2014/05/14/TheLittleMocker.html
+Practices
+---------
+- [Static Methods are Death to Testability, Google Inc](https://testing.googleblog.com/2008/12/static-methods-are-death-to-testability.html)
 
-https://www.amazon.com/dp/0321146530/?tag=stackoverfl08-20
-
-[Using Mockito's ArgumentCaptor in Scala](http://blog.themillhousegroup.com/2013/11/using-mockitos-argumentcaptor-in-scala.html)
-
-[ScalaTest and Mockito: Functions](http://bleibinha.us/blog/2013/11/scalatest-and-mockito-functions)
-
-[Testing styles in ScalaTest : PropSpec with TableDrivenPropertyChecks with Matchers, WordSpec etc](http://yeghishe.github.io/2015/05/31/scalatest-testing-styles.html)
-
-[Suite with ShouldMatchers, FunSuite, FeatureSpec with GivenWhenThen](https://blog.knoldus.com/2011/05/16/working-with-scala-test/)
-
-![image](https://phithoughts.files.wordpress.com/2011/05/core-traits.png?w=640)
-
-[scalamock, native scala testing](https://github.com/paulbutcher/scalamock#features)
+_The basic issue with static methods is they are procedural code. I have no idea how to unit-test procedural code. Unit-testing assumes that I can instantiate a piece of my application in isolation. During the instantiation I wire the dependencies with mocks/friendlies which replace the real dependencies. With procedural programing there is nothing to "wire" since there are no objects, the code and data are separate._
 
 Code coverage
 -------------
@@ -124,6 +116,63 @@ total 872
 -rw-r--r--  1 prayagupd NA\Domain Users   5401 Sep  3 10:13 test-suite.log
 ```
 
+[Smoke Testing/ Sanity Testing](https://en.wikipedia.org/wiki/Smoke_testing_(software))/ build verification test
+---------------------------------
+
+http://softwaretestingfundamentals.com/smoke-testing/
+
+```
+A smoke tester will select and run a subset of test cases that cover 
+the most important functionality of a component or system.
+```
+
+_it is a set of tests run on each new build of a product to verify that the build is
+testable before the build is released into the hands of the test team_
+
+`mvn shakedown`
+
+
+[Regression Testing](https://en.wikipedia.org/wiki/Regression_testing)
+-------------
+
+```
+ verifies that software, which was previously developed and tested, still performs correctly after it was changed or interfaced with other software.
+```
+
+
+Further TDD reading
+----
+
+- https://www.testcontainers.org/#about
+
+- [The Case Against TDD - Eric Smith](https://www.youtube.com/watch?v=nRdn5k5jKyY)
+
+- [Real world mutation testing](http://pitest.org/)
+
+_Faults (or mutations) are automatically seeded into your code,
+then your tests are run._
+
+_If your tests fail then the mutation is killed, if your tests pass then the mutation lived._
+
+- [How Car Testing Works](http://auto.howstuffworks.com/car-driving-safety/safety-regulatory-devices/car-testing1.htm)
+
+- https://8thlight.com/blog/uncle-bob/2014/05/14/TheLittleMocker.html
+
+- https://www.amazon.com/dp/0321146530/?tag=stackoverfl08-20
+
+- [Using Mockito's ArgumentCaptor in Scala](http://blog.themillhousegroup.com/2013/11/using-mockitos-argumentcaptor-in-scala.html)
+
+- [ScalaTest and Mockito: Functions](http://bleibinha.us/blog/2013/11/scalatest-and-mockito-functions)
+
+- [Testing styles in ScalaTest : PropSpec with TableDrivenPropertyChecks with Matchers, WordSpec etc](http://yeghishe.github.io/2015/05/31/scalatest-testing-styles.html)
+
+- [Suite with ShouldMatchers, FunSuite, FeatureSpec with GivenWhenThen](https://blog.knoldus.com/2011/05/16/working-with-scala-test/)
+
+![image](https://phithoughts.files.wordpress.com/2011/05/core-traits.png?w=640)
+
+- [scalamock, native scala testing](https://github.com/paulbutcher/scalamock#features)
+
+
 FIXME
 ------
 
@@ -135,3 +184,4 @@ org.mockito.internal.creation.MockSettingsImpl.setMockName(Lorg/mockito/mock/Moc
 Lorg/mockito/internal/creation/settings/CreationSettings;
 ```
 
+implicits: https://github.com/paulbutcher/ScalaMock/issues/79
