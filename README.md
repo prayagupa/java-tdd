@@ -71,8 +71,14 @@ using maven
 mvn clean test
 ```
 
-surefire reports
+test HTML reports
 --
+
+```bash
+mvn surefire-report:report
+```
+
+![](test-report.png)
 
 ```bash
 ls -l target/surefire-reports/

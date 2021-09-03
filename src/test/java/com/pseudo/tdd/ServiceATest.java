@@ -30,13 +30,12 @@ public class ServiceATest {
 
         Mockito.verify(serviceA.serviceB).doSomething2(captor1.capture());
 
-        assert captor1.getValue() == "1";
+        assert captor1.getValue().equals("1");
 
         Mockito.verify(serviceA.serviceB).doSomething3(captor2.capture());
         assert captor2.getValue().get("key") == "1";
 
         //
-
         Mockito.verify(serviceA.serviceB).doSomething4(eq("1"), captor3.capture());
         assert captor2.getValue().get("key") == "1";
     }
