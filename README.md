@@ -3,8 +3,10 @@ Java TDD
 
 - [Software Testing](https://en.wikipedia.org/wiki/Software_testing#Testing_levels)
 
-Unit Testing
+
+1 Unit Testing
 -----------------
+
 
 [xUnit Test Patterns: Refactoring Test Code](http://xunitpatterns.com/Code%20Refactorings.html)
 
@@ -15,7 +17,7 @@ Unit Testing
 ```
 Every class or object created is a fake. It is a mock<> if you verify() calls against it. 
 
-Otherwise its a stub<>, stub has the behaviour pre-determined. stub also referred to as state-based
+Otherwise its a stub<>, stub has the behaviour pre-determined. `stub` also referred to as state-based.
 ```
 
 ex.
@@ -41,14 +43,13 @@ class DependencyStubImpl implements DependencyStub {
 }
 ```
 
-Practices
----------
+<h3>UT Practices</h3>
+
 - [Static Methods are Death to Testability, Google Inc](https://testing.googleblog.com/2008/12/static-methods-are-death-to-testability.html)
 
 _The basic issue with static methods is they are procedural code. I have no idea how to unit-test procedural code. Unit-testing assumes that I can instantiate a piece of my application in isolation. During the instantiation I wire the dependencies with mocks/friendlies which replace the real dependencies. With procedural programing there is nothing to "wire" since there are no objects, the code and data are separate._
 
-Code coverage
--------------
+<h3>Code coverage</h3>
 
 [s-coverage plugin](https://github.com/nihil-os/scoverage-maven-plugin)
 
@@ -56,15 +57,13 @@ Code coverage
 sbt test
 ```
 
-using maven
----------------------
+<h3>using maven</h3>
 
 ```bash
 mvn clean test
 ```
 
-test HTML reports
---
+<h3>test HTML reports</h3>
 
 ```bash
 mvn surefire-report:report
@@ -116,10 +115,14 @@ total 872
 -rw-r--r--  1 prayagupd NA\Domain Users   5401 Sep  3 10:13 test-suite.log
 ```
 
-[Smoke Testing/ Sanity Testing](https://en.wikipedia.org/wiki/Smoke_testing_(software))/ build verification test
+2 Functional Testing
+--------------------
+
+3 [Smoke Testing/ Sanity Testing](https://en.wikipedia.org/wiki/Smoke_testing_(software))/ build verification test
 ---------------------------------
 
-http://softwaretestingfundamentals.com/smoke-testing/
+- http://softwaretestingfundamentals.com/smoke-testing/
+- https://medium.com/hootsuite-engineering/our-journey-in-smoke-test-frameworks-6a1fb30572e2
 
 ```
 A smoke tester will select and run a subset of test cases that cover 
@@ -132,12 +135,15 @@ testable before the build is released into the hands of the test team_
 `mvn shakedown`
 
 
-[Regression Testing](https://en.wikipedia.org/wiki/Regression_testing)
+4 [Regression Testing](https://en.wikipedia.org/wiki/Regression_testing)
 -------------
 
 ```
- verifies that software, which was previously developed and tested, still performs correctly after it was changed or interfaced with other software.
+ verifies that software, which was previously developed and tested, still performs correctly after it was changed 
+ or interfaced with other software.
 ```
+
+- https://cucumber.io/docs/installation/java/
 
 
 Further TDD reading
@@ -145,6 +151,9 @@ Further TDD reading
 
 - https://www.testcontainers.org/#about
 
+- https://github.com/vaquarkhan/vaquarkhan/blob/master/Design/building-microservices-designing-fine-grained-systems.pdf
+- https://abseil.io/resources/swe-book/html/ch14.html#functional_testing_of_one_or_more_inter
+- 
 - [The Case Against TDD - Eric Smith](https://www.youtube.com/watch?v=nRdn5k5jKyY)
 
 - [Real world mutation testing](http://pitest.org/)
