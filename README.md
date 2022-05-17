@@ -15,9 +15,10 @@ Java TDD
 [stub vs mock](http://stackoverflow.com/a/3459491/432903)
 
 ```
-Every class or object created is a fake. It is a mock<> if you verify() calls against it. 
+Every class or object created is a fake. 
+It is a mock<> if you verify() calls against it. 
 
-Otherwise its a stub<>, stub has the behaviour pre-determined. `stub` also referred to as state-based.
+Its a stub<> if you don't verify the calls, only have the behaviour pre-determined. `stub` also referred to as state-based.
 ```
 
 ex.
@@ -27,10 +28,13 @@ class SubjectToTest {
   private Dependency dependency;
   
   public String doSomething(){
-      dependency.doSomething() + "-something else"; //dependency.doSomething() is already defined, so its mock[]ed
+      //dependency.doSomething() is already defined, so its mock[]ed
+      dependency.doSomething() + "-something else";
   }
 }
+```
 
+```java
 interface DependencyStub {
     String doSomething();
 }
@@ -115,14 +119,22 @@ total 872
 -rw-r--r--  1 prayagupd NA\Domain Users   5401 Sep  3 10:13 test-suite.log
 ```
 
+<h5>References</h5>
+- https://martinfowler.com/articles/mocksArentStubs.html#SoShouldIBeAClassicistOrAMockist
+- https://martinfowler.com/bliki/TestCoverage.html
+- 
+
 2 Functional Testing
 --------------------
 
-Standards
+<h4>Standards</h4>
 
-- Integration Testing are used to test the multiple modules together. 
+- IT(Integration Testing, Component Testing) is used to test the multiple modules/components together. 
+- 
+<h4>2.1 Narrow IT</h4>
+- Narrow IT exercises only portion of the code in my service that talks to a separate service using test doubles of those services.
   Ex. If a ad-server microservice has ad-serving module which uses budget capping module and SKU availablity module in order to serve an ad. 
-- Use Test Doubles in place of dependencies which could be external microservices. Test Doubles could be Stubs, Fakes, Dummies, Spies or Mocks.
+- Use "Test Doubles" in place of dependencies which could be external microservices. Test Doubles could be Stubs, Fakes, Dummies, Spies or Mocks.
 
 ```
 Stub -> pre-defined behaviour
@@ -134,11 +146,23 @@ Spy -> To verify the right message is sent to the Double
 Mock -> To verify the right message is sent to the Double in a certain way
 ```
 
+<b>2.2 Broad IT</b>
+Broad IT requires live versions of all services, requiring substantial test environment and network access.
+
 - FT is Application Under Test(AUT).
-- FT should test cover the positive user scenarios.
-- FT should cover the decisional tests. Ex. respond greeting with name if user is loggedd in.
-- FT should cover service boundaries. Ex. 
-- 
+- FT should start testing the most popular positive user scenarios/ workflows.
+- FT should test the service boundaries. Ex. user-id can be of max length 16 letters
+- FT should test the decisional flows. Ex. respond profile page if user is loggedd in.
+- FT should verify service response and the data states for command (`POST`, `PUT`) requests.
+- FT should verify service response for query (`GET`) requests.
+
+<b>References</b>
+- https://medium.com/docplanner-tech/test-doubles-eeacc380e049
+- https://martinfowler.com/bliki/IntegrationTest.html
+- https://martinfowler.com/bliki/ComponentTest.html
+- e2e: https://martinfowler.com/bliki/BroadStackTest.html
+- https://www.pagerduty.com/blog/end-to-end-e2e-testing-best-practices/
+
 
 3 [Smoke Testing/ Sanity Testing](https://en.wikipedia.org/wiki/Smoke_testing_(software))/ build verification test
 ---------------------------------
