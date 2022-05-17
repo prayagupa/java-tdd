@@ -118,6 +118,28 @@ total 872
 2 Functional Testing
 --------------------
 
+Standards
+
+- Integration Testing are used to test the multiple modules together. 
+  Ex. If a ad-server microservice has ad-serving module which uses budget capping module and SKU availablity module in order to serve an ad. 
+- Use Test Doubles in place of dependencies which could be external microservices. Test Doubles could be Stubs, Fakes, Dummies, Spies or Mocks.
+
+```
+Stub -> pre-defined behaviour
+Fake -> service replacement using closer or similar tech. Ex instead of actual postgresdb use in memory database. Or in stead of testing a dependency service write a Double REST service.  
+Dummy -> Service replica does not do anything or returns nothing
+
+## coupling 
+Spy -> To verify the right message is sent to the Double
+Mock -> To verify the right message is sent to the Double in a certain way
+```
+
+- FT is Application Under Test(AUT).
+- FT should test cover the positive user scenarios.
+- FT should cover the decisional tests. Ex. respond greeting with name if user is loggedd in.
+- FT should cover service boundaries. Ex. 
+- 
+
 3 [Smoke Testing/ Sanity Testing](https://en.wikipedia.org/wiki/Smoke_testing_(software))/ build verification test
 ---------------------------------
 
