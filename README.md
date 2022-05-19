@@ -122,7 +122,7 @@ total 872
 <h5>References</h5>
 - https://martinfowler.com/articles/mocksArentStubs.html#SoShouldIBeAClassicistOrAMockist
 - https://martinfowler.com/bliki/TestCoverage.html
-- 
+
 
 2 Functional Testing
 --------------------
@@ -191,6 +191,16 @@ testable before the build is released into the hands of the test team_
 
 - https://cucumber.io/docs/installation/java/
 
+Non functional Testing/ Perf Testing
+--------------------------------------
+
+Practices
+
+- should run single user flow tests in order to understand the baseline measurements.
+- should run the Load Tests to understand the average and p90 metrics
+- should run the Peak Load Tests to understand the service behaviour under peak load.
+- should define the baseline concurrent requests, CPU utilization, Memory utilization, Latency(max, acceptable)
+- Stress Testing, Scalability Testing   
 
 Further TDD reading
 ----
