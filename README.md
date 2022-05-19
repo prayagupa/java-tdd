@@ -200,8 +200,9 @@ Practices
 - should run the Load Tests to understand the average and p90 metrics
 - should run the Peak Load Tests to understand the service behaviour under peak load.
 - should define the baseline concurrent requests, CPU utilization, Memory utilization, Latency(max, acceptable)
-- Stress Testing, Scalability Testing   
-
+- should run Stress Testing
+- should run Scalability Testing
+- 
 Further TDD reading
 ----
 
