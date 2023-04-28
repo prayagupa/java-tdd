@@ -129,7 +129,7 @@ UT Practices
 
 - test should be deterministic
 - test one scenario per test
-```groovy
+  ```groovy
   def "should ship an order, given valid order" () {
   
     then:
