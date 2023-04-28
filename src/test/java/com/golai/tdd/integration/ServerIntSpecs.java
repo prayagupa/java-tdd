@@ -1,4 +1,4 @@
-package com.pseudo.tdd.integration;
+package com.golai.tdd.integration;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.java8.En;

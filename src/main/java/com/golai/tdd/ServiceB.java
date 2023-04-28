@@ -1,4 +1,4 @@
-package com.pseudo.tdd;
+package com.golai.tdd;
 
 import java.util.Map;
 
@@ -10,7 +10,7 @@ import java.util.Map;
 public class ServiceB {
 
     public String deliverOrder(String input) {
-        return "data";
+        return "delivered";
     }
 
     public void doSomething1(String arg1, String arg2){

@@ -3,4 +3,5 @@ target/*
 project/target/*
 project/project/target/*
 *.iml
-
+.gradle/
+build/

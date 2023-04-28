@@ -18,20 +18,17 @@ References:
 
 ![TDD xunit](TDD_xunit.gif)
 
-[Stub vs Mock](http://stackoverflow.com/a/3459491/432903)
+1.1 Test Doubles: [Stub vs Mock vs Spy](http://stackoverflow.com/a/3459491/432903)
+---
+ 
+Stub
+---
 
-```
-Every class or object created is a fake. 
-It is a mock<> if you verify() calls against it. 
-```
+- It's a `stub<>` if you have the behaviour pre-determined, you don't verify the calls.
+  `stub` also referred to as state-based.
+- they always respond with the same static response regardless of input.
 
-```
-Its a stub<> if you don't verify the calls, 
-only have the behaviour pre-determined. 
-`stub` also referred to as state-based.
-```
-
-ex.
+Ex.
 
 ```java
 class SubjectToTest {
@@ -47,18 +44,113 @@ class SubjectToTest {
 ```java
 interface DependencyStub {
     String doSomething();
+    String doSomething2();
 }
 
 class DependencyStubImpl implements DependencyStub {
 
   public String doSomething(){
-     return "something";
+     // define the behaviour
+     return "static something";
+  }
+
+  public String doSomething2(){
+    return "static something 2";
   }
 }
 ```
 
-<h3>UT Practices</h3>
+```java
+public class Test {
+  Dependency stub = new DependencyStubImpl();
+  SubjectToTest subject = new SubjectToTest(stub);
+}
+```
 
+Spy
+---
+- a spy would allow you to stub out one of subject functions and 
+leave the rest of the class behaving as normal.
+- The spy can tell the test what parameters it was given, how many times it was called
+
+
+```groovy
+def "should deliver and update the state"() {
+  given:
+  String orderId = "order-id"
+  String newState = "state change"
+
+  serviceA.serviceB = Spy(ServiceB)
+  serviceA.serviceB.deliverOrder(orderId) >> newState
+
+  when:
+  String state = serviceA.deliverOrder(orderId)
+
+  then:
+  state == orderId + "-" + newState
+}
+```
+
+Mock
+----
+
+- It is a `mock<>` if you `verify()` calls against it.
+- Allows complete control over the doubled entity and provide the same information as a `spy` regarding how the entity has been interacted with
+- Mocks are configured before the code under test is executed to behave however we would like.
+
+```groovy
+    def "should execute and make relevant calls"() {
+        serviceA.serviceB = Mock(ServiceB)
+
+        given:
+        String orderId = "order-id"
+  
+        when:
+        serviceA.executeSomething(orderId)
+
+        then:
+        1 * serviceA.serviceB.doSomething1(_, _)
+        1 * serviceA.serviceB.doSomething2(_)
+        1 * serviceA.serviceB.doSomething3(_)
+        1 * serviceA.serviceB.doSomething4(_, _)
+    }
+```
+
+
+UT Practices
+-------------
+
+- test names should tell what it is testing (Documentation)
+
+```groovy
+def "should ship an order, given valid order" () {
+  
+}
+```
+
+- test should be deterministic
+- test one scenario per test
+```groovy
+def "should ship an order, given valid order" () {
+
+  then:
+  order.state == OrderState.Shipped
+}
+```
+
+- avoid database, cache, HTTP calls as part of unit tests(those are integration/ end to end tests)
+```groovy
+def "should ship an order, given valid order" () {
+  given:
+  subject.cacheService = Stub(CacheService)
+  subject.shippingMicroservice = Stub(ShippingMicroservice)
+  
+  then:
+  order.state == OrderState.Shipped
+} 
+```
+
+- should detect code smells in codebase.
 - [Static Methods are Death to Testability, Google Inc](https://testing.googleblog.com/2008/12/static-methods-are-death-to-testability.html)
 
 _The basic issue with static methods is they are procedural code. I have no idea how to unit-test procedural code. Unit-testing assumes that I can instantiate a piece of my application in isolation. During the instantiation I wire the dependencies with mocks/friendlies which replace the real dependencies. With procedural programing there is nothing to "wire" since there are no objects, the code and data are separate._

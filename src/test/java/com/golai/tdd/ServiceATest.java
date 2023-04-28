@@ -1,4 +1,4 @@
-package com.pseudo.tdd;
+package com.golai.tdd;
 
 import static org.mockito.ArgumentMatchers.eq;
 
@@ -20,7 +20,7 @@ public class ServiceATest {
         ServiceA serviceA = new ServiceA();
         serviceA.serviceB = Mockito.mock(ServiceB.class);
 
-        serviceA.echoAlPachino("1");
+        serviceA.executeSomething("1");
 
         Mockito.verify(serviceA.serviceB).doSomething1("1-once", "1-again");
 

@@ -1,6 +1,5 @@
 package com.pseudo.tdd.scalamock
 
-import com.pseudo.tdd.{ServiceA, ServiceB}
 import org.scalamock.scalatest.MockFactory
 import org.scalatest.{FunSuite, Matchers}
 

@@ -1,4 +1,4 @@
-package com.pseudo.tdd;
+package com.golai.tdd;
 
 import akka.dispatch.Futures;
 import org.junit.Test;

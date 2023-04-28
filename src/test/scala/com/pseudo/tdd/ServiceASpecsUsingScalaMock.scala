@@ -28,7 +28,7 @@ class ServiceASpecsUsingScalaMock extends FlatSpec with MockFactory {
     (serviceA.serviceB.doSomething4 (_: String, _:java.util.Map[String, String])) expects("serpico", hash)
 
     //when
-    serviceA.echoAlPachino("serpico")
+    serviceA.executeSomething("serpico")
 
   }
 }

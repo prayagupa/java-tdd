@@ -25,7 +25,7 @@ class ServiceASpec extends FunSuite with BeforeAndAfterEach {
   test("Service A delegates to ServiceB with kvp") {
 
     //when
-    serviceA.echoAlPachino("dreams")
+    serviceA.executeSomething("dreams")
 
     //then
     val serviceBCaptor = ArgumentCaptor.forClass(classOf[String])
@@ -39,7 +39,7 @@ class ServiceASpec extends FunSuite with BeforeAndAfterEach {
 
   test("Service A delegates to ServiceB with kvp which is captured in this test") {
 
-    serviceA.echoAlPachino("dreams")
+    serviceA.executeSomething("dreams")
 
     val captor2 = ArgumentCaptor.forClass(classOf[java.util.Map[String, String]])
 
@@ -52,7 +52,7 @@ class ServiceASpec extends FunSuite with BeforeAndAfterEach {
 
   test("Service A delegates to ServiceB with kvp which is captured in this test again") {
 
-    serviceA.echoAlPachino("dreams")
+    serviceA.executeSomething("dreams")
 
     val captor3 = ArgumentCaptor.forClass(classOf[java.util.Map[String, String]])
 

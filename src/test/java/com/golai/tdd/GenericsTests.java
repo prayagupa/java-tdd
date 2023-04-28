@@ -1,4 +1,4 @@
-package com.pseudo.tdd;
+package com.golai.tdd;
 
 import junit.framework.Assert;
 import org.junit.Test;

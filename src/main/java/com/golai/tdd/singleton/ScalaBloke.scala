@@ -1,4 +1,4 @@
-package com.pseudo.tdd.singleton
+package com.golai.tdd.singleton
 
 /**
   * Created by prayagupd

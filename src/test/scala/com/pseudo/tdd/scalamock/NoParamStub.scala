@@ -1,6 +1,5 @@
 package com.pseudo.tdd.scalamock
 
-import com.pseudo.tdd.scalamock.api.Service1
 import org.scalamock.scalatest.MockFactory
 import org.scalatest.{FlatSpec, FunSpec, FunSuite}
 

@@ -1,7 +1,5 @@
 package com.pseudo.tdd.strategy
 
-import com.pseudo.tdd.strategy.Intent.{BandAlbumsIntent, BandTourIntent}
-import com.pseudo.tdd.strategy.IntentAction.{BandAlbumAction, BandTourAction}
 import org.scalatest.{FunSuite, Matchers}
 
 class ApplicationRouterSpecs extends FunSuite with Matchers {

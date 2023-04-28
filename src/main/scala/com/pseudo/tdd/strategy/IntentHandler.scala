@@ -1,8 +1,5 @@
 package com.pseudo.tdd.strategy
 
-import com.pseudo.tdd.strategy
-import com.pseudo.tdd.strategy.Intent.BandTourIntent
-
 
 trait Intent { def `type`: String }
 
