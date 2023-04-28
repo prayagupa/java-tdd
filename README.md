@@ -1,10 +1,16 @@
 Java TDD
 =============
 
+- Unit testing
+- Integration testing
+- System testing
+- Acceptance testing
+
+References:
 - [Software Testing](https://en.wikipedia.org/wiki/Software_testing#Testing_levels)
 
 
-1 Unit Testing
+1: Unit Testing
 -----------------
 
 
@@ -12,13 +18,17 @@ Java TDD
 
 ![TDD xunit](TDD_xunit.gif)
 
-[stub vs mock](http://stackoverflow.com/a/3459491/432903)
+[Stub vs Mock](http://stackoverflow.com/a/3459491/432903)
 
 ```
 Every class or object created is a fake. 
 It is a mock<> if you verify() calls against it. 
+```
 
-Its a stub<> if you don't verify the calls, only have the behaviour pre-determined. `stub` also referred to as state-based.
+```
+Its a stub<> if you don't verify the calls, 
+only have the behaviour pre-determined. 
+`stub` also referred to as state-based.
 ```
 
 ex.
