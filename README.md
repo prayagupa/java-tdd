@@ -1,10 +1,11 @@
 Java TDD
 =============
 
-- Unit testing
-- Integration testing
-- System testing
-- Acceptance testing
+1) Unit Testing
+2) Integration Testing
+3) Contract Testing
+4) End2End Testing
+5) User Acceptance Testing
 
 References:
 - https://martinfowler.com/articles/practical-test-pyramid.html
@@ -12,6 +13,8 @@ References:
 
 1: Unit Testing
 -----------------
+
+Java has JUnit for unit testing. 
 
   [xUnit Test Patterns: Refactoring Test Code](http://xunitpatterns.com/Code%20Refactorings.html)
   
@@ -25,7 +28,7 @@ Stub
 
 - It's a `stub<>` if you have the behaviour pre-determined, you don't verify the calls.
   `stub` also referred to as state-based.
-- they always respond with the same static response regardless of input.
+- They always respond with the same static response regardless of input.
   
   Ex.
   
@@ -68,9 +71,9 @@ Stub
 
 Spy
 ---
-- a spy would allow you to stub out one of subject functions and 
+- A spy would allow you to stub out one of subject functions and 
 leave the rest of the class behaving as normal.
-- The spy can tell the test what parameters it was given, how many times it was called
+- The spy can tell the test what parameters it was given, how many times it was called.
 
 
   ```groovy
@@ -115,11 +118,17 @@ Mock
     }
   ```
 
+Testing exceptions
+---
+
+```java
+
+```
 
 UT Practices
 -------------
 
-- test names should tell what it is testing (Documentation)
+- Test names should tell what it is testing (Documentation)
 
   ```groovy
   def "should ship an order, given valid order" () {
@@ -127,8 +136,8 @@ UT Practices
   }
   ```
 
-- test should be deterministic
-- test one scenario per test
+- Test should be deterministic
+- Test one scenario per test
   ```groovy
   def "should ship an order, given valid order" () {
   
@@ -137,7 +146,7 @@ UT Practices
   }
   ```
 
-- avoid database, cache, HTTP calls as part of unit tests(those are integration/ end to end tests)
+- Avoid database, cache, HTTP calls as part of unit tests(those are integration/ end to end tests)
   ```groovy
   def "should ship an order, given valid order" () {
     given:
@@ -149,8 +158,8 @@ UT Practices
   } 
   ```
 
-- should detect code smells in codebase.
-- target quality over coverage
+- Tests should detect code smells in codebase.
+- Target quality over coverage
 - [Static Methods are Death to Testability, Google Inc](https://testing.googleblog.com/2008/12/static-methods-are-death-to-testability.html)
 
   _The basic issue with static methods is they are procedural code. I have no idea how to unit-test procedural code. Unit-testing assumes that I can instantiate a piece of my application in isolation. During the instantiation I wire the dependencies with mocks/friendlies which replace the real dependencies. With procedural programing there is nothing to "wire" since there are no objects, the code and data are separate._
