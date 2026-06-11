@@ -1,7 +1,19 @@
-.idea/*
-target/*
-project/target/*
-project/project/target/*
+.idea/
+.vscode/
+.DS_Store
 *.iml
-.gradle/
-build/
+*.ipr
+*.iws
+
+# Build outputs
+/target/
+/project/target/
+/project/project/target/
+/build/
+
+# Gradle
+/.gradle/
+/gradle/wrapper/dists/
+
+# Local JVM / toolchain metadata
+/.sdkman/
